@@ -25,6 +25,19 @@ public class GameRepository {
         games.add(game);
     }
 
+    // Put
+    void update(Game game, int id) {
+        Optional<Game> existingGame = findbyId(id);
+        if (existingGame.isPresent()) {
+            games.set(games.indexOf(existingGame.get()), game);
+        }
+    }
+
+    // Delete
+    void delete(int id) {
+        games.removeIf(game -> game.getId() == id);
+    }
+
     @PostConstruct
     private void init() {
         games.add(new Game(1, "Manchester United", LocalDateTime.now(),
