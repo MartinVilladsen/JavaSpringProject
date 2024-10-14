@@ -1,4 +1,4 @@
-package foo.bar;
+package dev.martinvilladsen.liverpool;
 
 import org.springframework.stereotype.Component;
 

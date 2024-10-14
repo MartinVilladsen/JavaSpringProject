@@ -1,17 +1,32 @@
 package dev.martinvilladsen.liverpool;
 
-import foo.bar.WelcomeMessage;
+import dev.martinvilladsen.liverpool.game.Game;
+import dev.martinvilladsen.liverpool.game.Location;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Bean;
+
+import java.time.LocalDateTime;
 
 @SpringBootApplication
 public class Application {
 
+	private static final Logger log = LoggerFactory.getLogger(Application.class);
+
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
+	}
 
-		var welcomeMessage = new WelcomeMessage();
-		System.out.println(welcomeMessage.getWelcomeMessage());
+	@Bean
+	CommandLineRunner game() {
+		return args -> {
+			Game game = new Game("Manchester City", LocalDateTime.now(), LocalDateTime.now().plusMinutes(90), Location.Home);
+			log.info("Game: " + game);
+		};
 	}
 
 
