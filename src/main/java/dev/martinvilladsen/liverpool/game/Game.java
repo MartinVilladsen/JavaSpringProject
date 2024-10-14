@@ -4,22 +4,23 @@ import java.time.LocalDateTime;
 
 public class Game {
 
-    private static int id;
+    private int id;
     private String opponent;
     private LocalDateTime gameStart;
     private LocalDateTime gameEnd;
     private Location location;
 
 
-    public Game(String opponent, LocalDateTime gameStart, LocalDateTime gameEnd, Location location) {
-        id += 1;
+    public Game(int id, String opponent, LocalDateTime gameStart, LocalDateTime gameEnd, Location location) {
+        this.id = id;
         this.opponent = opponent;
         this.gameStart = gameStart;
         this.gameEnd = gameEnd;
         this.location = location;
     }
 
-    public static int getId() {
+
+    public int getId() {
         return id;
     }
 
