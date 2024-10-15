@@ -1,6 +1,7 @@
 package dev.martinvilladsen.liverpool;
 
 import dev.martinvilladsen.liverpool.game.Game;
+import dev.martinvilladsen.liverpool.game.GameRepository;
 import dev.martinvilladsen.liverpool.game.Location;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,14 +21,16 @@ public class Application {
 		SpringApplication.run(Application.class, args);
 	}
 
+	/**
 	@Bean
-	CommandLineRunner game() {
+	CommandLineRunner game(GameRepository gameRepository) {
 		return args -> {
 			Game game = new Game(4, "Manchester City", LocalDateTime.now(),
-					LocalDateTime.now().plusMinutes(90), Location.Home);
-			log.info("Game: " + game);
+					LocalDateTime.now().plusMinutes(90), Location.HOME);
+			gameRepository.create(game);
 		};
 	}
+	*/
 
 
 

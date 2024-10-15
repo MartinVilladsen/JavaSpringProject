@@ -18,6 +18,7 @@ public class GameController {
         this.gameRepository = gameRepository;
     }
 
+
     // Get
     @GetMapping("")
     List<Game> findAll() {
@@ -26,7 +27,7 @@ public class GameController {
 
     @GetMapping("/{id}")
     Game findById(@PathVariable Integer id) {
-        Optional<Game> game = gameRepository.findbyId(id);
+        Optional<Game> game = gameRepository.findById(id);
         if (game.isEmpty()) {
           throw new GameNotFoundException();
         }
@@ -53,8 +54,5 @@ public class GameController {
     void delete(@PathVariable int id) {
         gameRepository.delete(id);
     }
-
-
-
 
 }
